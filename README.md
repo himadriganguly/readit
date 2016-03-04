@@ -22,5 +22,5 @@ This application is developed to learn and practice [**DJANGO**] (https://www.dj
 
 ## CONTRIBUTE
 
-If have any idea you want to implement please create a pull request and I will do my best to merge appropriately.
+If you have any idea you want to implement please create a pull request and I will do my best to merge appropriately.
 
