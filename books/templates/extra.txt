@@ -1,0 +1,33 @@
+list.html
+
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+	<h1>{{ books.count | apnumber | title }} book{{ books.count | pluralize}}</h1>
+	{% for book in books %}
+		<h2><a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a> by {{ book.list_authors }}</h2>
+		{% if book.is_favourite %}
+			<span class="highlight">favourite</span>
+		{% endif %}
+		{{ book.review }}
+	{% endfor %}
+{% endblock %}
+
+
+book.html
+
+{% extends "base.html" %}
+
+{% block content %}
+	{% if book.review %}
+		<div class="book">
+			<h3>{{ book.title }}</h3>
+			<p>By {% for author in book.authors.all %} {{ author.name }} {% endfor %}</p>
+				{% if book.is_favourite %}
+					<p class="highlight">favourite</p>
+				{% endif %}
+				<p>{{ book.review|linebreaks }}</p>
+		</div>
+	{% endif %}
+{% endblock %}
